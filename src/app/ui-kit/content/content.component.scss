@@ -1,0 +1,9 @@
+@import "/src/variables";
+
+$padding: 40px;
+
+:host {
+  display: block;
+  padding: 40px;
+  height: calc(100vh - $headerHeight - $padding*2);
+}

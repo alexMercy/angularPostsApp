@@ -1,0 +1,35 @@
+@import "/src/variables";
+
+.card {
+  width: 400px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+  border: 1px solid $bg-block;
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition-property: all;
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+
+
+  &:hover {
+    box-shadow: 0 0 15px rgba(217, 217, 217);
+
+  }
+}
+
+.header {
+  display: block;
+  height: 40px;
+  border-bottom: 1px solid $bg-block;
+  overflow: hidden;
+}
+
+
+.title {
+  font-weight: 600;
+}

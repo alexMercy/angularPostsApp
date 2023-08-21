@@ -1,0 +1,18 @@
+<h1 *ngIf="(isLogged | async); else signInTitle">Вход на портал</h1>
+<ng-template #signInTitle><h1>Регистрация на портале</h1></ng-template>
+<form
+  [formGroup]="form"
+>
+  <div class="form-item">
+    <label>Логин:</label>
+    <input formControlName="login" placeholder="Введите логин..."/>
+  </div>
+  <div class="form-item">
+    <label>Пароль:</label>
+    <input formControlName="password" placeholder="Введите пароль..."/>
+  </div>
+  <div class="controls">
+    <app-button text="Регистрация" type="default"/>
+    <app-button text="Войти" type="primary" (click)="onSubmit()"/>
+  </div>
+</form>

@@ -1,0 +1,6 @@
+<button [class]="class">
+  <app-sign-in *ngIf="icon === 'sign-in'" />
+  <div *ngIf="icon === 'sign-out'"><app-sign-out /></div>
+  <div *ngIf="icon === 'log-in'"><app-log-in /></div>
+  {{text}}
+</button>
