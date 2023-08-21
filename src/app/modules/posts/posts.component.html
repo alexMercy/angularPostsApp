@@ -1,0 +1,11 @@
+<ng-container *ngFor="let post of posts$ | async" (load)="onLoad()">
+  <app-card [title]="post.title" (click)="navigateToPost(post.id)">
+    {{post.body}}
+  </app-card>
+</ng-container>
+
+
+<!--onLoad method not working offline-->
+<ng-container *ngIf="!(posts$ | async)">
+  Loading...
+</ng-container>

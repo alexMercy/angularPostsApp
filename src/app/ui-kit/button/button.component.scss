@@ -1,0 +1,76 @@
+@import "/src/variables";
+
+$primary: #1677ff;
+$hover: #4096ff;
+$primary-active: #0958d9;
+
+$danger: #ff4d4f;
+$danger-hover: #ff7875;
+$danger-active: #d9363e;
+
+button {
+  font-size: 14px;
+
+  padding: 4px 15px;
+  height: 32px;
+  box-shadow: 0 2px 0 rgba(5,145,255,.1);
+
+  border: 0;
+  border-radius: 6px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+
+  transition-property: all;
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+}
+
+.primary {
+  background-color: $primary;
+  color: white;
+  &:hover {
+    background-color: $hover;
+  }
+  &:active {
+    background-color: $primary-active;
+  }
+}
+
+.primary-danger {
+  background-color: $danger;
+  color: white;
+  &:hover {
+    background-color: $danger-hover;
+  }
+  &:active {
+    background-color: $danger-active;
+  }
+}
+
+.default {
+  background-color: white;
+  border: 1px solid $bg-block;
+  &:hover {
+    border-color: $hover;
+    color: $hover;
+  }
+  &:active {
+    border-color: $primary-active;
+    color: $primary-active;
+  }
+}
+
+.default-danger {
+  background-color: white;
+  border: 1px solid $danger;
+  color: $danger;
+  &:hover {
+    border-color: $danger-hover;
+    color: $danger-hover;
+  }
+  &:active {
+    border-color: $danger-active;
+    color: $danger-active;
+  }
+}

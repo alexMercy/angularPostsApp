@@ -1,0 +1,12 @@
+<div class="post" *ngIf="post | async; let data">
+  <div class="container">
+    <span class="title">{{data.title}}</span>
+    <span>{{data.body}}</span>
+    UserID: {{data.userId}}
+  </div>
+  <div class="controls">
+    <app-button routerLink="../" type="primary" text="Назад"/>
+  </div>
+</div>
+
+

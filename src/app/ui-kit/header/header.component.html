@@ -1,0 +1,9 @@
+<div class="container">
+  <app-button *ngIf="(isLogged | async); else nonAuth" routerLink="/login" text="Выйти" type="primary" danger (click)="logOut()" />
+<ng-template #nonAuth >
+  <app-button routerLink="/signin" text="Регистрация" type="default" icon="sign-in">
+  </app-button>
+  <app-button routerLink="/login" text="Войти" type="primary" icon="log-in"/>
+</ng-template>
+</div>
+
