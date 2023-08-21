@@ -1,4 +1,4 @@
-<h1 *ngIf="(isLogged | async); else signInTitle">Вход на портал</h1>
+<h1 *ngIf="mode === MODES.login; else signInTitle">Вход на портал</h1>
 <ng-template #signInTitle><h1>Регистрация на портале</h1></ng-template>
 <form
   [formGroup]="form"
@@ -11,8 +11,14 @@
     <label>Пароль:</label>
     <input formControlName="password" placeholder="Введите пароль..."/>
   </div>
-  <div class="controls">
-    <app-button text="Регистрация" type="default"/>
-    <app-button text="Войти" type="primary" (click)="onSubmit()"/>
+  <div *ngIf="mode === MODES.login; else signInControls" class="controls">
+    <app-button [routerLink]="'../'+MODES.signIn" text="Регистрация" type="default"/>
+    <app-button text="Войти" type="primary" (click)="onLogin()"/>
   </div>
+  <ng-template #signInControls>
+    <div class="controls">
+      <app-button text="Назад" (click)="onBack()"/>
+      <app-button text="Зарегистрироваться" type="primary"/>
+    </div>
+  </ng-template>
 </form>

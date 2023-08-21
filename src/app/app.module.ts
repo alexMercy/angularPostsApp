@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UiKitModule } from "./ui-kit/ui-kit.module";
+import {IsLoggedService} from "./services/isLogged.service";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { UiKitModule } from "./ui-kit/ui-kit.module";
     AppRoutingModule,
     UiKitModule,
   ],
-  providers: [],
+  providers: [IsLoggedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

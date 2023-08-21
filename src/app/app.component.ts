@@ -12,12 +12,6 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     !localStorage.getItem(STORAGE.users) && localStorage.setItem(STORAGE.users, "[]");
-    !localStorage.getItem(STORAGE.logged) && localStorage.setItem(STORAGE.logged, "false");
-
-
-    onunload = () => {
-      localStorage.setItem(STORAGE.logged, "false");
-    }
   }
 
 }

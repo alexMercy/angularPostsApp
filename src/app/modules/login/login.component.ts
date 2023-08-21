@@ -1,18 +1,26 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationExtras, Router, RouterLink} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UsersData} from "../../utils/types";
 import {STORAGE} from "../../utils/storageItems";
 import {IsLoggedService} from "../../services/isLogged.service";
+import {Location} from '@angular/common';
+
+
+export enum MODES {
+  login = "login",
+  signIn = "signin"
+}
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [IsLoggedService]
 })
 export class LoginComponent implements OnInit{
-  isLogged = this.isLoggedService.isLogged;
+  readonly MODES = MODES;
+
+  mode = this.location.path().slice(1);
 
   form = new FormGroup({
     login: new FormControl('', Validators.required),
@@ -23,25 +31,31 @@ export class LoginComponent implements OnInit{
     private readonly activatedRoute: ActivatedRoute,
     private readonly router: Router,
     private readonly isLoggedService: IsLoggedService,
+    private readonly location: Location
     ){}
 
 
   ngOnInit() {
-    console.log(this.isLoggedService.id)
   }
 
-  onSubmit = () => {
+  onLogin = () => {
     if (!this.form.valid) return;
     const values = this.form.controls;
     const users: UsersData[] = [...JSON.parse(localStorage.getItem(STORAGE.users)!)];
+
     if (users.find(item =>
       item.login === values.login.value &&
-      item.password === values.password.value)) {
+      item.password === values.password.value)
+    ) {
 
       this.isLoggedService.updateIsLogged(true);
-      this.router.navigate(['../posts'], {relativeTo: this.activatedRoute});
+      this.router.navigate(['posts']);
     }
 
+  }
+
+  onBack = () => {
+    this.location.back();
   }
 
 }
